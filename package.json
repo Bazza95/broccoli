@@ -1,9 +1,9 @@
 {
-  "name": "cbd",
+  "name": "broccoli",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "material-ui": "^1.0.0-beta.33",
+    "material-ui": "^1.0.0-beta.36",
     "material-ui-pickers": "^1.0.0-beta.13.1",
     "moment": "^2.20.1",
     "prop-types": "^15.5.10",
@@ -23,7 +23,7 @@
     "redux-persist": "^4.9.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "uuid": "^3.2.1"    
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

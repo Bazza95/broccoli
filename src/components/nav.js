@@ -108,42 +108,9 @@ class MainNav extends React.Component {
                             [classes.largerLogo]: true
                           })}
                         >
-                          <span className={classes.lighter}>my</span>BM
+                          BROCCOLI & CO.
                         </Typography>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.responsiveToggle} className="mr-2" />
-                    <Collapse isOpen={this.state.responsiveOpen} navbar>
-                        <Nav className="ml-auto" fill navbar>
-                          <NavItem>
-                              <NavLink tag={Link} to="/knowledgeCenter">
-                                  <Button className={classes.button} onClick={this.responsiveToggle}>
-                                     Knowledge Center
-                                  </Button>
-                              </NavLink>
-                          </NavItem>
-                          <NavItem>
-                              <NavLink tag={Link} to="/tools">
-                                  <Button className={classes.button} onClick={this.responsiveToggle}>
-                                    Important Tools
-                                  </Button>
-                              </NavLink>
-                          </NavItem>
-                          <NavItem>
-                              <NavLink tag={Link} to="/stories">
-                                  <Button className={classes.button} onClick={this.responsiveToggle}>
-                                    Grad Stories
-                                  </Button>
-                              </NavLink>
-                          </NavItem>
-                          <NavItem>
-                              <NavLink tag={Link} to="/feedback">
-                                  <Button className={classes.button} onClick={this.responsiveToggle}>
-                                    Feedback
-                                  </Button>
-                              </NavLink>
-                          </NavItem>
-                        </Nav>
-                    </Collapse>
                 </Navbar>
             </div>
         );
@@ -154,6 +121,5 @@ MainNav.Proptypes = {
     classes: PropTypes.object.isRequired,
     route: PropTypes.string
 };
-
 
 export default withStyles(styles)(MainNav);
