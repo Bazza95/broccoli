@@ -1,0 +1,41 @@
+/* General Styling Rules */
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* The nav is 76px high - for the fixed navbar */
+body {
+  margin: 76px 0 0 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none !important;
+  color: #FFF;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* For the NAV */
+#sideBar > a {
+    color: #000;
+}
+
+ #main-layout.MuiGrid-spacing-xs-16-16, #main-layout.MuiGrid-spacing-xs-16-17,
+ #main-layout.MuiGrid-spacing-xs-16-18, #main-layout.MuiGrid-spacing-xs-16-19,
+ main > .MuiGrid-spacing-xs-16-116 {
+   max-width: 100% !important;
+   margin: 0 !important;
+ }
+
+.MuiGrid-spacing-xs-16-138 {
+    max-width: 100% !important;
+}
+
+  .MuiGrid-spacing-xs-16-116 > .MuiGrid-typeItem-102 {
+  padding: 0;
+}
