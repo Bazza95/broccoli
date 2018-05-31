@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import {createLogger} from 'redux-logger';
 import {persistStore, autoRehydrate} from 'redux-persist';
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
 import allReducers from './reducers';
 

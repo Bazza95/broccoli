@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
-import Dashboard from './components/dashboard';
+import Broccoli from './components/broccoli';
 
 import AuthRoute from './AuthRoute';
 
@@ -14,7 +14,7 @@ class Routes extends Component {
 		return (
         <BrowserRouter>
             <Switch>
-                <AuthRoute exact path={"/"} component={Dashboard} />
+                <AuthRoute exact path={"/"} component={Broccoli} />
             </Switch>
         </BrowserRouter>
 		)

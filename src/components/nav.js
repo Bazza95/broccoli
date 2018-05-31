@@ -2,9 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+import {withStyles} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import {
     Collapse,
@@ -17,8 +17,6 @@ import {
 } from 'reactstrap';
 import classNames from 'classnames';
 import $ from 'jquery';
-
-import {connect} from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -35,13 +33,6 @@ const styles = theme => ({
         marginRight: 20,
         color: "#FFF"
     },
-    centeredLogo: {
-        marginLeft: "40%"
-    },
-    largerLogo: {
-        fontSize: "130%",
-        fontWeight: "bold",
-    },
     responsiveNavItem: {
         margin: "0 auto"
     },
@@ -53,6 +44,11 @@ const styles = theme => ({
     },
     lighter: {
       fontWeight: "lighter"
+    },
+    logo: {
+        marginLeft: 100,
+        color: "hsla(0, 0%, 48%, 1)",
+        fontWeight: "bold"
     }
 });
 
@@ -95,17 +91,17 @@ class MainNav extends React.Component {
         return (
             <div className={classes.root}>
                 <Navbar
-                    dark
-                    style={{backgroundColor: "#00F"}}
+                    color="light"
+                    light
                     className={classNames("fixed-top")}
                     expand="lg"
+                    style={{borderBottom: "2px solid hsla(0, 0%, 68%, 0.8)"}}
                 >
-                    <NavbarBrand tag={Link} to="/" className={classNames({
-                        [classes.centeredLogo]: this.state.windowWidth < 992, "mr-auto": true})}>
+                    <NavbarBrand tag={Link} to="/">
                         <Typography type="title" color="inherit" 
                           className={classNames({
                             [classes.flex]: true,
-                            [classes.largerLogo]: true
+                            [classes.logo]: true
                           })}
                         >
                           BROCCOLI & CO.

@@ -1,9 +1,8 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
-
-import {connect} from 'react-redux';
+import {Route} from 'react-router-dom';
 
 import Nav from './components/nav';
+import Footer from './components/footer';
 
 const Layout = ({ component: Component}) => (
     <Route render={props => (
@@ -12,27 +11,14 @@ const Layout = ({ component: Component}) => (
             <main>
                 <Component {...props}/>
             </main>
+            <Footer />
         </div>
     )}/>
 );
 
 class AuthRoute extends React.Component {
     render(){
-//         const isLogged = false;
-
-//         if(this.props.path === "/" || this.props.path === "/true"){
-//             if(isLogged) {
-//                 return <Redirect to="/home" />;
-//             }else {
-//                 return <Route {...this.props} />;
-//             }
-//         }else {
-//             if(isLogged){
-                return <Layout {...this.props} />;
-//             }else {
-//                 return <Redirect to="/" />;
-//             }
-//         }
+        return <Layout {...this.props} />;
     }
 }
 
