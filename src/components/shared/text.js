@@ -57,7 +57,7 @@ class Text extends React.Component {
                     rowsMax={this.props.rows}
                     placeholder={this.props.placeholder}
                     style={this.props.styling}
-                    margin="dense" // Taking up too much space, so make as small vertically as possible
+                    margin="dense" // Taking up too much space, so make as small as is vertically possible
                 />
                 <FormHelperText>
                     {
@@ -67,23 +67,6 @@ class Text extends React.Component {
                         this.props.helperText
                     }
                 </FormHelperText>
-                {
-                    create ?
-                        <Button
-                            color="primary"
-                            onClick={() => this.props.setVal(this.props.name, this.props.val)}
-                        >
-                            Create
-                        </Button>
-                    : edit ?
-                        <Button
-                            color="primary"
-                            onClick={() => this.props.setVal(this.props.name, this.props.val)}
-                        >
-                            Edit
-                        </Button>
-                    :""
-                }
             </div>
         )
     }
@@ -97,10 +80,8 @@ Text.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
-    create: PropTypes.bool,
     min: PropTypes.number,
     max: PropTypes.number,
-    edit: PropTypes.bool,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     helperText: PropTypes.string,

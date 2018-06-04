@@ -5,14 +5,17 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import RegistrationDialog from './RegistrationDialog';
+import Footer from './footer';
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        height: "calc(100vh - 76px - 72px)", // static navbar and footer
     },
     mainDash: {
         fontWeight: "bold",
-        color: "hsla(0, 0%, 48%, 1)"
+        color: "hsla(0, 0%, 48%, 1)",
+        textAlign: 'center'
     },
     button: {
         margin: theme.spacing.unit,
@@ -34,12 +37,10 @@ class Broccoli extends Component {
     render() {
         const classes = this.props.classes;
         return (
-            <Grid container className={classes.root}>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Grid container justify="center" alignItems="center" direction="row"
-                          style={{height: 500}}
-                    >
-                        <Grid item>
+            <Grid container className={classes.root} justify="center" alignItems="center" direction="row">
+                <Grid item xs={10} sm={8} md={7} lg={7} xl={7}>
+                    <Grid container justify="center" alignItems="center" direction="row">
+                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Grid container justify="center" alignItems="center" direction="column">
                                 <Grid item>
                                     <Typography variant="display2" gutterBottom className={classes.mainDash}>
@@ -72,6 +73,7 @@ class Broccoli extends Component {
                     />
                     : null
                 }
+                <Footer />
             </Grid>
         );
     }

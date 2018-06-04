@@ -8,6 +8,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Divider from '@material-ui/core/Divider';
+import Icon from '@material-ui/core/Icon';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Text from './shared/text';
 
@@ -18,6 +20,10 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         textTransform: "none",
         color: "hsla(0, 0%, 48%, 1)"
+    },
+    progress: {
+        margin: `0 ${theme.spacing.unit * 2}px`,
+        color: "#00F"
     },
 });
 
@@ -45,20 +51,33 @@ class RegistrationDialog extends React.Component {
     checkServerResponse = (response) => {
         if(response.hasOwnProperty('errorMessage')){
             this.setState({validationError: response.errorMessage});
+            this.setState({validation: false})
         }else{
             this.setState({validation: true});
         }
     };
 
+    // Validates against an email regex
+    validateEmail = (email) => {
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    // Checks errors with data integrity, returns error to user.
     validateForm = () => {
-        let error = "";
-        if(this.state.email === ""){
-            error += "Email must be provided";
-        } else if(this.state.fullName === ""){
-            error += "Full name must be provided";
-        } else if(this.state.email !== this.state.confirmEmail){
-            error += "Confirm Email field and Email field must be the same";
+        let error;
+        if(this.state.fullName.length < 3){
+            error = "Name must be at least 3 characters long.";
+        }else if(this.state.email === ""){
+            error = "'Email' must be provided";
+        }else if(this.state.confirmEmail === ""){
+            error = "'Confirm Email' must be provided";
+        }else if(this.state.email !== this.state.confirmEmail){
+            error = "'Confirm Email' field and 'Email' field must be the same";
+        }else if(!this.validateEmail(this.state.email)){
+            error = "Not a valid email address."
         }else {
+            this.setState({pending: true});
             sendInviteRequest({
                 name: this.state.fullName,
                 email: this.state.email
@@ -75,6 +94,8 @@ class RegistrationDialog extends React.Component {
             <Dialog
                 open={this.props.open}
                 onClose={this.toggle}
+                maxWidth="xs"
+                fullWidth
             >
                 {
                     this.state.validation ?
@@ -129,7 +150,10 @@ class RegistrationDialog extends React.Component {
                                 />
                                 {
                                     this.state.validationError !== "" ?
-                                        this.state.validationError : null
+                                        <Typography style={{fontWeight: "bold", color: "#D00", wordWrap: "inherit"}} component="h4">
+                                            {this.state.validationError}
+                                        </Typography>
+                                    : null
                                 }
                             </DialogContent>
                             <DialogActions>
@@ -138,7 +162,13 @@ class RegistrationDialog extends React.Component {
                                     onClick={() => this.validateForm()}
                                     fullWidth
                                     className={classes.button}>
-                                    Send
+                                    {
+                                        this.state.pending ?
+                                            <CircularProgress thickness={7} className={classes.progress} size={25} />
+                                        : this.state.validation ?
+                                            <Icon>check_circle</Icon>
+                                        : "Send"
+                                    }
                                 </Button>
                             </DialogActions>
                         </Fragment>
