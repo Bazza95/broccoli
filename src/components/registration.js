@@ -34,7 +34,7 @@ const initialState = {
     validationError: ""
 };
 
-class RegistrationDialog extends React.Component {
+class Registration extends React.Component {
     state = initialState;
     changeVal = (value, field) => {
         this.props.changeValue(value, field);
@@ -58,6 +58,8 @@ class RegistrationDialog extends React.Component {
     };
 
     // Validates against an email regex
+    // This would ideally be moved into a separate Email textfield component using react-text-mask
+    // But for the purpose of this test I will leave it with the rest of the similar business logic
     validateEmail = (email) => {
         let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
@@ -133,7 +135,6 @@ class RegistrationDialog extends React.Component {
                                     name="fullName"
                                     setVal={this.changeFormValue}
                                 />
-
                                 <Text
                                     val={this.state.email}
                                     type="email"
@@ -161,7 +162,8 @@ class RegistrationDialog extends React.Component {
                                     variant="outlined"
                                     onClick={() => this.validateForm()}
                                     fullWidth
-                                    className={classes.button}>
+                                    className={classes.button}
+                                >
                                     {
                                         this.state.pending ?
                                             <CircularProgress thickness={7} className={classes.progress} size={25} />
@@ -178,13 +180,10 @@ class RegistrationDialog extends React.Component {
     }
 }
 
-RegistrationDialog.propTypes = {
+Registration.propTypes = {
     open: PropTypes.bool,
-    email: PropTypes.string,
-    confirmEmail: PropTypes.string,
-    fullName: PropTypes.string,
     changeValue: PropTypes.func,
     classes: PropTypes.object
 };
 
-export default withStyles(styles)(RegistrationDialog);
+export default withStyles(styles)(Registration);

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import Acronym from './acronym-reducer';
+import Veggies from './broccoli-reducer';
 
 const rootReducer = combineReducers({
-    acronyms: Acronym
+    veggies: Veggies
 });
 
 const allReducers = (state, action) => {

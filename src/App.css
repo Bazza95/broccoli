@@ -20,11 +20,6 @@ a {
     box-shadow: none !important;
 }
 
-/* For the NAV */
-#sideBar > a {
-    color: #000;
-}
-
  #main-layout.MuiGrid-spacing-xs-16-16, #main-layout.MuiGrid-spacing-xs-16-17,
  #main-layout.MuiGrid-spacing-xs-16-18, #main-layout.MuiGrid-spacing-xs-16-19,
  main > .MuiGrid-spacing-xs-16-116 {

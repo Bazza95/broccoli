@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import RegistrationDialog from './RegistrationDialog';
+import Registration from './registration';
 import Footer from './footer';
 
 const styles = theme => ({
@@ -67,7 +67,7 @@ class Broccoli extends Component {
                 </Grid>
                 {
                     this.state.open ?
-                    <RegistrationDialog
+                    <Registration
                         open={this.state.open}
                         changeValue={this.changeVal}
                     />

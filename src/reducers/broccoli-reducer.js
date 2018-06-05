@@ -1,8 +1,8 @@
-const Acronym = (state=acronymInitialState, action) => {
+const Veggies = (state=acronymInitialState, action) => {
 	switch (action.type) {
-        case "ADD_ALL_ACRONYMS": {
+        case "ADD_ALL_VEGGIES": {
             state = {
-                Acronyms: action.payload
+                Veggies: action.payload
             };
             break;
         }
@@ -13,7 +13,7 @@ const Acronym = (state=acronymInitialState, action) => {
 };
 
 const acronymInitialState = {
-    Acronyms: []
+    Veggies: []
 };
 
-export default Acronym;
+export default Veggies;
