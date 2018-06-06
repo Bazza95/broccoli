@@ -6,19 +6,15 @@ import { shallow, mount } from 'enzyme';
 
 // Wraps everything so I can target children and mounting in a simpler fashion
 describe("Broccoli", () => {
-    let state;
     let screen;
     const broccoli = () => {
         screen = mount(
-            <Broccoli {...state}/>
+            <Broccoli />
         );
         return screen;
     };
 
     beforeEach(() => {
-        state = {
-            open: undefined
-        };
         screen = undefined;
     });
 
@@ -32,7 +28,7 @@ describe("Broccoli", () => {
         });
     });
 
-    // The footer has 0 props
+    // The footer has 0 props - is always rendered
     describe("rendered `Footer`", () => {
         it("does not receive any props", () => {
             const footer = broccoli().find(Footer);
@@ -47,12 +43,17 @@ describe("Broccoli", () => {
 
     // When the open prop is false, Registration isn't rendered
     describe("when `open` is false", () => {
-        beforeEach(() => {
-            state.open = false;
-        });
-
-        it("sets the rendered `Registration`'s `open` prop to undefined'", () => {
+        it("does not render `Registration`", () => {
+            broccoli().setState({open: false});
             expect(broccoli().find(Registration).length).toBe(0);
+        });
+    });
+
+    // When the open prop is false, Registration isn't rendered
+    describe("when `open` is true", () => {
+        it("renders `Registration`", () => {
+            broccoli().setState({open: true});
+            expect(broccoli().contains(Registration)).toEqual(true);
         });
     });
 });

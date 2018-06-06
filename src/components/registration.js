@@ -25,6 +25,12 @@ const styles = theme => ({
         margin: `0 ${theme.spacing.unit * 2}px`,
         color: "#00F"
     },
+    validationError: {
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "#D00",
+        wordWrap: "inherit"
+    }
 });
 
 const initialState = {
@@ -51,7 +57,8 @@ class Registration extends React.Component {
     checkServerResponse = (response) => {
         if(response.hasOwnProperty('errorMessage')){
             this.setState({validationError: response.errorMessage});
-            this.setState({validation: false})
+            this.setState({validation: false});
+            this.setState({pending: false});
         }else{
             this.setState({validation: true});
         }
@@ -71,11 +78,11 @@ class Registration extends React.Component {
         if(this.state.fullName.length < 3){
             error = "Name must be at least 3 characters long.";
         }else if(this.state.email === ""){
-            error = "'Email' must be provided";
+            error = "'Email' must be provided.";
         }else if(this.state.confirmEmail === ""){
-            error = "'Confirm Email' must be provided";
+            error = "'Confirm Email' must be provided.";
         }else if(this.state.email !== this.state.confirmEmail){
-            error = "'Confirm Email' field and 'Email' field must be the same";
+            error = "'Confirm Email' field and 'Email' field must be the same.";
         }else if(!this.validateEmail(this.state.email)){
             error = "Not a valid email address."
         }else {
@@ -151,7 +158,7 @@ class Registration extends React.Component {
                                 />
                                 {
                                     this.state.validationError !== "" ?
-                                        <Typography style={{fontWeight: "bold", color: "#D00", wordWrap: "inherit"}} component="h4">
+                                        <Typography className={classes.validationError} component="h4">
                                             {this.state.validationError}
                                         </Typography>
                                     : null
